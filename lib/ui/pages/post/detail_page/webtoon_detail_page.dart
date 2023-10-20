@@ -18,7 +18,7 @@ class WebtoonDetailPage extends ConsumerWidget {
       body: RefreshIndicator(
         key: refreshKey,
         onRefresh: () async {
-          print("리플래시됨");
+          print("리플래시됨asd");
           await ref.read(webtoonDetailProvider.notifier).notifyInit();
         },
         child: WebtoonDetailBody(),
