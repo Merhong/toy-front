@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_blog/ui/pages/post/home_page/widgets/home_list_body.dart';
+import 'package:flutter_blog/ui/pages/webtoon/home_page/widgets/home_list_body.dart';
 
 class HomeListPage extends StatelessWidget {
   @override

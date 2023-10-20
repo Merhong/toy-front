@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/size.dart';
 import 'package:flutter_blog/data/model/episode.dart';
 import 'package:flutter_blog/data/model/webtoon.dart';
-import 'package:flutter_blog/ui/pages/post/detail_page/webtoon_detail_view_model.dart';
+import 'package:flutter_blog/ui/pages/webtoon/detail_page/webtoon_detail_view_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 

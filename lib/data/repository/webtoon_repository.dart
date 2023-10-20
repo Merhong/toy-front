@@ -70,14 +70,12 @@ class WebtoonRepository {
   Future<ResponseDTO> fetchWebtoon(String jwt, int id) async {
     try {
       // 통신
-      print("11111111111");
       Response response = await dio.get("/webtoons/$id",
           options: Options(headers: {
             "Authorization":
                 "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJtZXRhY29kaW5nLWtleSIsImlkIjoxLCJlbWFpbCI6InNzYXJAbmF0ZS5jb20iLCJleHAiOjE2OTgzODY3MTN9.bCIsMY0FRg4MFCH32s6UYexrTjcm23hPoN8A9-hJsok-a-zA_BYg7SldbOX_3y1JMMJkRFz5PZHFEI4bzqd53w"
           }));
       // 응답 받은 데이터 파싱
-      print("2222222222222");
       ResponseDTO responseDTO = new ResponseDTO.fromJson(response.data);
       responseDTO.data = Webtoon.fromJson(responseDTO.data);
 
