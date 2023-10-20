@@ -1,9 +1,11 @@
 // 웹툰 홈화면용 DTO
 class WebtoonReqDTO {
-  final int webtoonId;
+  //reqDTO말고 resDTO에 인덱스(webtoonId) 있어야하니까 뺐습니다
   final String day;
 
-  WebtoonReqDTO(this.webtoonId, {this.day = "금"});
+  WebtoonReqDTO({this.day = "금"});
+  Map<String, dynamic> toJson() => {"day": day};
+
 // Map 통신 코드
 }
 
@@ -13,6 +15,7 @@ class WebtoonDetailReqDTO {
   final String webtoonName;
 
   WebtoonDetailReqDTO({this.day = "금", required this.webtoonName});
+  Map<String, dynamic> toJson() => {"day": day, "webtoonName": webtoonName};
 }
 //   Map<String, dynamic> toJson() =>
 //       {"username": username, "password": password, "email": email};

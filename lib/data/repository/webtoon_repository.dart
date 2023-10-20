@@ -1,30 +1,38 @@
+import 'package:flutter_blog/_core/constants/http.dart';
+import 'package:flutter_blog/data/dto/response_dto.dart';
+import 'package:flutter_blog/data/dto/webtoon_reponse.dart';
 import 'package:flutter_blog/data/dto/webtoon_request.dart';
-import 'package:logger/logger.dart';
+import 'package:flutter_blog/data/model/detail.dart';
+import 'package:flutter_blog/data/model/webtoon.dart';
 
-// View -> Provider(전역 or 뷰모델) -> Repository
 class WebtoonRepository {
-  Future<void> fetchWebtoonList() async {}
+  Future<ResponseDTO> fetchWebtoonList(WebtoonReqDTO webtoonReqDTO) async {
+    try {
+      final response = await dio.get("/webtoons", data: webtoonReqDTO.toJson());
+      ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
+      List<dynamic> mapList = responseDTO.data as List<Webtoon>;
+      List<WebtoonResDTO> webtoonList =
+          mapList.map((e) => WebtoonResDTO.fromJson(e)).toList();
+      responseDTO.data = webtoonList;
+      return responseDTO;
+    } catch (e) {
+      return ResponseDTO(-1, "통신 실패", null);
+    }
+  }
 
-  // GET : Webtoon
-  Future<WebtoonReqDTO> fetchWebtoon(int id) async {
-    print('Task started');
-
-    // Duration 객체를 사용하여 원하는 지연 시간을 설정합니다.
-    // 아래의 코드는 3초(3000 밀리초) 후에 작업을 실행합니다.
-    Duration delayDuration = Duration(seconds: 3);
-
-    await Future.delayed(delayDuration);
-
-    // 지연 후에 실행할 작업을 이 곳에 추가합니다.
-    print('Task completed after 3 seconds');
-    WebtoonReqDTO webtoonReqDTO = WebtoonReqDTO(
-        image:
-            "https://image-comic.pstatic.net/webtoon/641253/thumbnail/thumbnail_IMAG21_01672165-03c8-44b1-ba0e-ef82c9cfcd10.jpg",
-        title: "외모지상주의",
-        author: "박태준",
-        starCount: "9.99");
-    Logger().d(webtoonReqDTO);
-
-    return webtoonReqDTO;
+  Future<ResponseDTO> fetchWebtoonDetailList(
+      WebtoonDetailReqDTO webtoonDetailReqDTO) async {
+    try {
+      final response =
+          await dio.get("/Detail", data: webtoonDetailReqDTO.toJson());
+      ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
+      List<dynamic> mapList = responseDTO.data as List<Detail>;
+      List<WebtoonDetailResDTO> detailList =
+          mapList.map((e) => WebtoonDetailResDTO.fromJson(e)).toList();
+      responseDTO.data = detailList;
+      return responseDTO;
+    } catch (e) {
+      return ResponseDTO(-1, "통신 실패", null);
+    }
   }
 }
