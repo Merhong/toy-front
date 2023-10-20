@@ -10,7 +10,7 @@ class HomePage extends StatelessWidget {
         title: Text('Webtoons'),
       ),
       body: FutureBuilder<List<Webtoon>>(
-        future: WebtoonRepository().findAll(),
+        future: WebtoonRepository().findAllWebtoon(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());

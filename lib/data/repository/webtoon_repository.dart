@@ -27,8 +27,31 @@ class WebtoonRepository {
 
     return webtoonDTO;
   }
+  Future<List<Webtoon>> findAllDetail() async {
+    print('Task started');
+    Duration delayDuration = Duration(seconds: 3);
+    await Future.delayed(delayDuration);
 
-  Future<List<Webtoon>> findAll() async {
+    List<Webtoon> webtoons = [
+      // Add your Webtoon objects here.
+      Webtoon(
+        image: "https://picsum.photos/id/237/300/300",
+        title: "외모지상주의",
+        author: "박태준",
+        starCount: "9.47",
+      ),
+      Webtoon(
+          image:
+          "https://image-comic.pstatic.net/webtoon/817081/thumbnail/thumbnail_IMAG21_439e78c2-e71e-4671-ad2f-703327c0bd8d.jpeg",
+          title: "오늘은나랑만나",
+          author: "네이버웹툰 작가",
+          starCount: "9.83"),
+    ];
+
+    return webtoons;
+  }
+
+  Future<List<Webtoon>> findAllWebtoon() async {
     print('Task started');
     Duration delayDuration = Duration(seconds: 3);
     await Future.delayed(delayDuration);
