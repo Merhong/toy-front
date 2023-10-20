@@ -18,5 +18,6 @@ Map<String, Widget Function(BuildContext)> getRouters() {
     Move.joinPage: (context) => const JoinPage(),
     Move.postListPage: (context) => PostListPage(),
     Move.postWritePage: (context) => const PostWritePage(),
+
   };
 }
