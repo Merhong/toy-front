@@ -1,14 +1,21 @@
+// 웹툰 홈화면용 DTO
 class WebtoonReqDTO {
-  final String image;
-  final String title;
-  final String author;
-  final String starCount;
+  final int webtoonId;
+  final String day;
 
-  WebtoonReqDTO(
-      {required this.image,
-      required this.title,
-      required this.author,
-      required this.starCount});
+  WebtoonReqDTO(this.webtoonId, {this.day = "금"});
+// Map 통신 코드
+}
+
+// 웹툰 상세보기용 DTO
+class WebtoonDetailReqDTO {
+  final String day;
+  final String webtoonName;
+
+  WebtoonDetailReqDTO({this.day = "금", required this.webtoonName});
+}
+
+// Map 통신 코드
 
 //   Map<String, dynamic> toJson() =>
 //       {"username": username, "password": password, "email": email};
@@ -21,4 +28,3 @@ class WebtoonReqDTO {
 //   LoginReqDTO({required this.username, required this.password});
 //
 //   Map<String, dynamic> toJson() => {"username": username, "password": password};
-}

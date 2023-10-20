@@ -10,7 +10,7 @@ import 'ui/pages/webtoon/home_page.dart';
 GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 void main() {
-  runApp(ProviderScope(child: const MyApp()));
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
