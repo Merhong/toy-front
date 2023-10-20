@@ -6,7 +6,7 @@ class ResponseDTO {
 
   ResponseDTO(this.code, this.msg, this.data);
 
-  ResponseDTO.fromJson(Map<String, dynamic> json)
+  ResponseDTO. fromJson(Map<String, dynamic> json)
       : code = json["code"],
         msg = json["msg"],
         data = json["data"];

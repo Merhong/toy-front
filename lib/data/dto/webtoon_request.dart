@@ -6,6 +6,7 @@ class WebtoonReqDTO {
   WebtoonReqDTO({this.day = "금"});
   Map<String, dynamic> toJson() => {"day": day};
 
+
 // Map 통신 코드
 }
 
