@@ -1,12 +1,13 @@
 import 'package:intl/intl.dart';
 
+/* 상세보기 */
 class Episode {
-  int episodeId;
-  String detailTitle;
-  String thumbnail;
+  int episodeId; // 상세보기 ID
+  String detailTitle; // 에피소드 제목
+  String thumbnail; // 에피소드 썸네일
   int epNum;
-  double starCount;
-  bool isRead;
+  double starCount; // 별점
+  bool isRead; // 읽었는지 여부
   int? cookieCost;
   DateTime createdAt;
 

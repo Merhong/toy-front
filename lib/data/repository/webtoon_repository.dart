@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dio/dio.dart';
 import 'package:flutter_blog/_core/constants/http.dart';
 import 'package:flutter_blog/data/dto/post_request.dart';
@@ -98,6 +96,7 @@ class WebtoonRepository {
       // 통신
       print("11111aa111111");
       Response response = await dio.get("/webtoons",
+          // 로그인한 화면을 확인하기 위해 임시로 JWT 토큰 부여
           options: Options(headers: {
             "Authorization":
                 "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJtZXRhY29kaW5nLWtleSIsImlkIjoxLCJlbWFpbCI6InNzYXJAbmF0ZS5jb20iLCJleHAiOjE2OTgzODY3MTN9.bCIsMY0FRg4MFCH32s6UYexrTjcm23hPoN8A9-hJsok-a-zA_BYg7SldbOX_3y1JMMJkRFz5PZHFEI4bzqd53w"
@@ -111,7 +110,8 @@ class WebtoonRepository {
       print("444");
       List<dynamic> mapList = responseDTO.data as List<dynamic>;
       print("555");
-      List<Webtoon> webtoonList = mapList.map((webtoon) => Webtoon.fromHomeJson(webtoon)).toList();
+      List<Webtoon> webtoonList =
+          mapList.map((webtoon) => Webtoon.fromHomeJson(webtoon)).toList();
       print("6666");
 
       // Logger().d(webtoonList);
