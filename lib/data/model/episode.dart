@@ -5,7 +5,6 @@ class Episode {
   String detailTitle;
   String thumbnail;
   double starCount;
-  bool isRead;
   int? cookieCost;
   DateTime createdAt;
 
@@ -15,7 +14,6 @@ class Episode {
     required this.detailTitle,
     required this.thumbnail,
     required this.starCount,
-    required this.isRead,
     this.cookieCost,
     required this.createdAt,
   });
@@ -28,12 +26,11 @@ class Episode {
         detailTitle = json["detailTitle"],
         thumbnail = json["thumbnail"],
         starCount = json["starCount"],
-        isRead = json["isRead"],
         cookieCost = json["cookieCost"],
         createdAt = DateFormat("yyyy-mm-dd").parse(json["createdAt"]);
 
   @override
   String toString() {
-    return 'Episode{episodeId: $episodeId, detailTitle: $detailTitle, thumbnail: $thumbnail, starCount: $starCount, isRead: $isRead, cookieCost: $cookieCost, createdAt: $createdAt}';
+    return 'Episode{episodeId: $episodeId, detailTitle: $detailTitle, thumbnail: $thumbnail, starCount: $starCount, cookieCost: $cookieCost, createdAt: $createdAt}';
   }
 }

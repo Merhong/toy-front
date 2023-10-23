@@ -34,10 +34,13 @@ class WebtoonDetailEpisode extends StatelessWidget {
                   height: sizeXL50,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(sizeBorder5),
-                    child: Image.network(
-                      '$imageURL/EpisodeThumbnail/${webtoon.episodeList![index].thumbnail}',
-                      fit: BoxFit.cover,
-                    ),
+                    child: Image.network('$imageURL/EpisodeThumbnail/${webtoon.episodeList![index].thumbnail}', fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) {
+                      return Image.asset(
+                        "assets/default_episode_Thumbnail.jpg",
+                        fit: BoxFit.cover,
+                      );
+                    }),
                   ),
                 ),
                 SizedBox(width: sizeM10),

@@ -26,10 +26,10 @@ class _WebtoonDetailDescriptionState extends State<WebtoonDetailDescription> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("${widget.webtoon.title}", style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold)),
+          Text("${widget.webtoon.title}", style: Theme.of(context).textTheme.titleMedium),
           Row(
             children: [
-              Text("${widget.webtoon.author}"),
+              Text("${widget.webtoon.author.authorname}"),
               Text(" · "),
               Text("${widget.webtoon.weekDay}요웹툰"),
             ],

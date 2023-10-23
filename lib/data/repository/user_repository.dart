@@ -40,7 +40,7 @@ class UserRepository {
       ResponseDTO responseDTO = new ResponseDTO.fromJson(response.data);
 
       responseDTO.data = new User.fromJson(responseDTO.data);
-      Logger().d(responseDTO);
+      // Logger().d(responseDTO);
 
       // 3. 토큰 받기
       List<String>? jwt = response.headers["Authorization"];

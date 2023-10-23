@@ -24,6 +24,7 @@ class WebtoonDetailBody extends ConsumerWidget {
       slivers: [
         SliverAppBar(
           pinned: true,
+          elevation: 0,
           expandedHeight: 60,
           backgroundColor: Colors.white,
           flexibleSpace: FlexibleSpaceBar(
@@ -35,7 +36,7 @@ class WebtoonDetailBody extends ConsumerWidget {
           child: WebtoonDetailThumbnail(
             image: (webtoon.episodeList != null && webtoon.episodeList!.length != 0)
                 ? "$imageURL/EpisodeThumbnail/${webtoon.episodeList![0].thumbnail}"
-                : "$imageURL/EpisodeThumbnail/default_webtoon_Thumbnail.jpg",
+                : "$imageURL/EpisodeThumbnail/default_episode_Thumbnail.jpg",
             likeCount: webtoon.likeCount!,
           ),
         ),

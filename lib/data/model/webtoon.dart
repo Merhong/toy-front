@@ -1,10 +1,11 @@
+import 'package:flutter_blog/data/model/Author.dart';
 import 'package:flutter_blog/data/model/episode.dart';
 import 'package:intl/intl.dart';
 
 class Webtoon {
   final int id;
   final String title;
-  final String author;
+  final Author author;
   double? starCount;
   String? image;
   int? age;
@@ -31,29 +32,29 @@ class Webtoon {
   });
 
   // Map 형태로 받아서 Dart 객체로 변환합니다.
-  Webtoon.fromJson(Map<String, dynamic> json)
+  Webtoon.fromDetailJson(Map<String, dynamic> json)
       : id = json["id"],
         title = json["title"],
-        author = json["author"],
         starCount = json["starCount"],
         image = json["image"],
         age = json["age"],
         weekDay = json["weekDay"],
-        intro = json["intro"],
         specially = json["specially"],
-        hashtag = json["hashtag"],
+        intro = json["intro"],
         likeCount = json["likeCount"],
+        hashtag = json["hashtag"],
+        author = Author.fromJson(json["authorDTO"]),
         episodeList = (json["episodeList"] as List).map((jsonEp) => Episode.fromJson(jsonEp)).toList();
 
   Webtoon.fromHomeJson(Map<String, dynamic> json)
       : id = json["id"],
         title = json["title"],
-        author = json["author"],
         starCount = json["starCount"],
         image = json["image"],
         age = json["age"],
         specially = json["specially"],
-        weekDay = json["weekDay"];
+        weekDay = json["weekDay"],
+        author = Author.fromJson(json["authorDTO"]);
 
   @override
   String toString() {

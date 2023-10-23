@@ -59,7 +59,7 @@ class _WebtoonListPageViewState extends State<WebtoonListPageView> {
                 height: double.infinity,
                 width: sizeGetScreenWidth(context),
                 child: Image.network(
-                  "${imageURL}EpisodeThumbnail/${(index + 1) * 16}.jpg",
+                  "${imageURL}OtherImage/${index + 21}.jpg",
                   fit: BoxFit.cover,
                 ),
               ),
@@ -111,8 +111,7 @@ class _WebtoonListPageViewState extends State<WebtoonListPageView> {
                           SizedBox(width: sizeS5),
                           Container(
                             constraints: BoxConstraints(maxWidth: sizeGetScreenWidth(context) * 0.5),
-                            child: Text("무한 레벨업 in 무림",
-                                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.white), overflow: TextOverflow.ellipsis),
+                            child: Text("무한 레벨업 in 무림", style: Theme.of(context).textTheme.bodyLarge, overflow: TextOverflow.ellipsis),
                           ),
                           SizedBox(width: sizeS5),
                           Container(

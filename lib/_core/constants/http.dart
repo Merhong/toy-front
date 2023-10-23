@@ -10,7 +10,7 @@ const String imageURL = "${serverURL}/image?route=";
 // http 통신
 final dio = Dio(
   BaseOptions(
-    baseUrl: serverURL,
+    baseUrl: serverURL, // 서버 주소 위에 적어주세요
     contentType: "application/json; charset=utf-8",
   ),
 );

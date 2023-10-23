@@ -25,7 +25,16 @@ class WebtoonListItem extends StatelessWidget {
             children: [
               Container(
                 height: sizeWebtoonListItemPictureHeight160,
-                child: Image.network("${imageURL}/WebtoonThumbnail/${webtoon.image}", fit: BoxFit.cover),
+                child: Image.network(
+                  "${imageURL}/WebtoonThumbnail/${webtoon.image}",
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return Image.asset(
+                      "assets/default_webtoon_Thumbnail.jpg",
+                      fit: BoxFit.cover,
+                    );
+                  },
+                ),
               ),
               if (webtoon.specially == "순위") ...[
                 Container(
@@ -78,7 +87,7 @@ class WebtoonListItem extends StatelessWidget {
                       SizedBox(width: 2),
                       Container(
                         constraints: BoxConstraints(maxWidth: sizeGetScreenWidth(context) * 0.24),
-                        child: Text("${webtoon.title}", style: TextStyle(fontWeight: FontWeight.w600), overflow: TextOverflow.ellipsis),
+                        child: Text("${webtoon.title}", style: Theme.of(context).textTheme.displayMedium, overflow: TextOverflow.ellipsis),
                       ),
                     ],
                   )
@@ -101,13 +110,13 @@ class WebtoonListItem extends StatelessWidget {
                           SizedBox(width: 2),
                           Container(
                             constraints: BoxConstraints(maxWidth: sizeGetScreenWidth(context) * 0.24),
-                            child: Text("${webtoon.title}", style: TextStyle(fontWeight: FontWeight.w600), overflow: TextOverflow.ellipsis),
+                            child: Text("${webtoon.title}", style: Theme.of(context).textTheme.displayMedium, overflow: TextOverflow.ellipsis),
                           ),
                         ],
                       )
                     : Container(
                         constraints: BoxConstraints(maxWidth: sizeGetScreenWidth(context) * 0.29),
-                        child: Text("${webtoon.title}", style: TextStyle(fontWeight: FontWeight.w600), overflow: TextOverflow.ellipsis),
+                        child: Text("${webtoon.title}", style: Theme.of(context).textTheme.displayMedium, overflow: TextOverflow.ellipsis),
                       ),
           ],
         ),
@@ -115,8 +124,8 @@ class WebtoonListItem extends StatelessWidget {
           children: [
             Container(
                 constraints: BoxConstraints(maxWidth: sizeGetScreenWidth(context) * 0.21),
-                child: Text("${webtoon.author} ", style: TextStyle(fontSize: 9, color: Colors.grey), overflow: TextOverflow.ellipsis)),
-            Container(child: Text("★ ${webtoon.starCount}", maxLines: 1, style: TextStyle(fontSize: 10, color: Colors.grey))),
+                child: Text("${webtoon.author.authorname} ", style: Theme.of(context).textTheme.bodySmall, overflow: TextOverflow.ellipsis)),
+            Container(child: Text("★ ${webtoon.starCount}", style: Theme.of(context).textTheme.bodySmall, maxLines: 1)),
           ],
         ),
       ],
