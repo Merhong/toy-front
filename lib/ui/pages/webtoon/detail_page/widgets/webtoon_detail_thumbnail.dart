@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/size.dart';
+import 'package:intl/intl.dart';
 
 class WebtoonDetailThumbnail extends StatelessWidget {
   final String image;
+  final int likeCount;
 
   const WebtoonDetailThumbnail({
     required this.image,
+    required this.likeCount,
     super.key,
   });
 
@@ -13,7 +16,7 @@ class WebtoonDetailThumbnail extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Container(color: Colors.blue[900], height: 60),
+        Container(color: Colors.blue, height: 60),
         buildThumbnail(context),
         buildInteresting(context),
       ],
@@ -23,18 +26,19 @@ class WebtoonDetailThumbnail extends StatelessWidget {
   Positioned buildInteresting(BuildContext context) {
     return Positioned(
       child: SizedBox(
-        height: 180,
+        height: 175,
         child: Align(
           alignment: Alignment(0, 1),
           child: Container(
             height: 25,
             decoration: BoxDecoration(
-              color: Colors.blue[900],
+              color: Colors.blue,
               borderRadius: BorderRadius.circular(10),
             ),
-            child: Text("+ 관심 2,364,554",
-                style: TextStyle(
-                    color: Colors.white, fontWeight: FontWeight.w500)),
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: sizeS5),
+              child: Text("+ 관심 ${NumberFormat('#,###').format(likeCount)}", style: TextStyle(color: Colors.white, fontWeight: FontWeight.w500)),
+            ),
           ),
         ),
       ),
@@ -46,8 +50,7 @@ class WebtoonDetailThumbnail extends StatelessWidget {
       child: Center(
         child: ClipRRect(
             borderRadius: BorderRadius.circular(10),
-            child: Image.asset('assets/${image}',
-                fit: BoxFit.cover, width: getScreenWidth(context) * 0.85)),
+            child: Image.asset('${image}', fit: BoxFit.cover, height: 190, width: sizeGetScreenWidth(context) * 0.85)),
       ),
     );
   }

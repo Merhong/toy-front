@@ -4,7 +4,8 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 // http 통신
 final dio = Dio(
   BaseOptions(
-    baseUrl: "본인(서버)IP:8080", // 내 IP 입력
+    baseUrl: "http://192.168.0.45:8080", // 내 IP 입력 // 학원
+    // baseUrl: "http://172.30.1.18:8081", // 내 IP 입력 // 집
     contentType: "application/json; charset=utf-8",
   ),
 );

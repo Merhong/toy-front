@@ -7,9 +7,11 @@ class Webtoon {
   final String author;
   double? starCount;
   String? image;
+  int? age;
   String? weekDay;
   String? intro;
   String? hashtag;
+  String? specially;
   int? likeCount;
   List<Episode>? episodeList;
 
@@ -19,9 +21,11 @@ class Webtoon {
     required this.author,
     this.starCount,
     this.image,
+    this.age,
     this.weekDay,
     this.intro,
     this.hashtag,
+    this.specially,
     this.likeCount,
     this.episodeList,
   });
@@ -33,8 +37,10 @@ class Webtoon {
         author = json["author"],
         starCount = json["starCount"],
         image = json["image"],
+        age = json["age"],
         weekDay = json["weekDay"],
         intro = json["intro"],
+        specially = json["specially"],
         hashtag = json["hashtag"],
         likeCount = json["likeCount"],
         episodeList = (json["episodeList"] as List).map((jsonEp) => Episode.fromJson(jsonEp)).toList();
@@ -44,10 +50,13 @@ class Webtoon {
         title = json["title"],
         author = json["author"],
         starCount = json["starCount"],
-        image = json["image"];
+        image = json["image"],
+        age = json["age"],
+        specially = json["specially"],
+        weekDay = json["weekDay"];
 
   @override
   String toString() {
-    return 'Webtoon{id: $id, title: $title, author: $author, starCount: $starCount, image: $image, weekDay: $weekDay, intro: $intro, hashtag: $hashtag, likeCount: $likeCount, episodeList: $episodeList}';
+    return 'Webtoon{id: $id, title: $title, author: $author, starCount: $starCount, image: $image, age: $age, weekDay: $weekDay, intro: $intro, hashtag: $hashtag, specially: $specially, likeCount: $likeCount, episodeList: $episodeList}';
   }
 }

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_blog/data/model/webtoon.dart';
 
-class WebtoonDetailDescription extends StatelessWidget {
+import '../../../../../_core/constants/size.dart';
+import '../../../../../data/model/webtoon.dart';
+import '../../../../common_widgets/advertising.dart';
+
+class WebtoonDetailDescription extends StatefulWidget {
   const WebtoonDetailDescription({
     super.key,
     required this.webtoon,
@@ -10,32 +13,86 @@ class WebtoonDetailDescription extends StatelessWidget {
   final Webtoon webtoon;
 
   @override
+  State<WebtoonDetailDescription> createState() => _WebtoonDetailDescriptionState();
+}
+
+class _WebtoonDetailDescriptionState extends State<WebtoonDetailDescription> {
+  bool isState = false;
+
+  @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+      padding: EdgeInsets.fromLTRB(sizePaddingLR17, sizeM10, sizePaddingLR17, sizeM10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("${webtoon.title}",
-              style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold)),
+          Text("${widget.webtoon.title}", style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold)),
           Row(
             children: [
-              Text("${webtoon.author}"),
-              SizedBox(width: 10),
-              Text("${webtoon.weekDay}요웹툰"),
+              Text("${widget.webtoon.author}"),
+              Text(" · "),
+              Text("${widget.webtoon.weekDay}요웹툰"),
             ],
           ),
-          Text("${webtoon.intro}"),
-          SizedBox(height: 10),
-          Container(
-            height: 60,
-            width: double.infinity,
-            decoration: BoxDecoration(
-                color: Colors.grey[300],
-                border: Border.all(width: 1),
-                borderRadius: BorderRadius.circular(10)),
-            child: Center(child: Text("광고")),
-          )
+          // Text("${widget.webtoon.intro}", maxLines: 1, style: TextStyle(overflow: TextOverflow.ellipsis)),
+          // SizedBox(height: sizeM10),
+
+          //
+          ExpansionPanelList(
+            expansionCallback: (panelIndex, isExpanded) {
+              // print("isState:$isState");
+              // print("isExpanded:$isExpanded");
+              setState(() {});
+            },
+            children: [
+              ExpansionPanel(
+                isExpanded: isState,
+                headerBuilder: (context, isExpanded) {
+                  // print("확장됨isExpanded:${isExpanded}");
+                  isState = !isExpanded;
+                  return Text(
+                    "${widget.webtoon.intro}",
+                    maxLines: 1,
+                    style: TextStyle(overflow: TextOverflow.ellipsis),
+                  );
+                },
+                body: Column(
+                  children: [
+                    Text("${widget.webtoon.intro}"),
+                    Text("연령 ${widget.webtoon.age}세 이용가"),
+                  ],
+                ),
+              ),
+            ],
+          ),
+
+          //
+
+          Stack(
+            children: [
+              ExpansionTile(
+                title: Text(
+                  "${widget.webtoon.intro}",
+                  maxLines: 1,
+                  style: TextStyle(overflow: TextOverflow.ellipsis),
+                ),
+                children: <Widget>[
+                  Column(
+                    children: [
+                      Text("${widget.webtoon.intro}"),
+                      Text("연령 ${widget.webtoon.age}세 이용가"),
+                    ],
+                  ),
+                ],
+              ),
+            ],
+          ),
+
+          //
+
+          //
+
+          Advertising(ADHeight: 75),
         ],
       ),
     );

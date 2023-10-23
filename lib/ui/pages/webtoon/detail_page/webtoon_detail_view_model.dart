@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/data/dto/response_dto.dart';
 import 'package:flutter_blog/data/model/webtoon.dart';
+import 'package:flutter_blog/data/provider/param_provider.dart';
 import 'package:flutter_blog/data/repository/webtoon_repository.dart';
 import 'package:flutter_blog/main.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -25,8 +26,9 @@ class WebtoonDetailViewModel extends StateNotifier<WebtoonDetailModel?> {
   //
   // notify 구독자들에게 알려줌
   Future<void> notifyInit() async {
-    ResponseDTO responseDTO = await WebtoonRepository().fetchWebtoon("jwt임시", 1);
-    print("notifyInit실행됨2");
+    print("notifyInit실행");
+    int webtoonId = ref.read(paramProvider).webtoonDetailId!;
+    ResponseDTO responseDTO = await WebtoonRepository().fetchWebtoon("jwt임시", webtoonId);
     state = WebtoonDetailModel(webtoon: responseDTO.data);
   }
   //
@@ -55,7 +57,7 @@ class WebtoonDetailViewModel extends StateNotifier<WebtoonDetailModel?> {
 }
 
 // 3. 창고 관리자 (View가 빌드되기 직전에 생성됨)
-final webtoonDetailProvider = StateNotifierProvider<WebtoonDetailViewModel, WebtoonDetailModel?>((ref) {
-  Logger().d("창고관리자 실행됨");
+final webtoonDetailProvider = StateNotifierProvider.autoDispose<WebtoonDetailViewModel, WebtoonDetailModel?>((ref) {
+  // Logger().d("webtoonDetail창고관리자 실행됨");
   return new WebtoonDetailViewModel(ref, null)..notifyInit();
 });
