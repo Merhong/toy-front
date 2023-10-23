@@ -6,4 +6,5 @@
 
 
 
-## 상세보기 페이지![KakaoTalk_20231013_164540378](https://github.com/Merhong/toy-front/assets/78343061/c9022466-f76c-45ed-9778-0ffbe4d0eb80)
+## 상세보기 페이지
+![KakaoTalk_20231023_091908084](https://github.com/Merhong/toy-front/assets/78343061/6bf0f1d2-087c-4600-9f55-63d3df868cea)
