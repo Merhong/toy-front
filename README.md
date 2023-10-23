@@ -1,5 +1,11 @@
 # 네이버 웹툰 홈페이지 및 상세보기 페이지 클론코딩
-
+### 홈페이지
+-SliverAppBar
+-SliverToBoxAdapter, SliverGrid, bottomNavigationBar
+  
+### 상세보기
+- bottomNavigationBar
+- 
 
 ## 홈페이지
 
