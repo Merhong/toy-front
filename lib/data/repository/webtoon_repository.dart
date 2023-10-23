@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:flutter_blog/_core/constants/http.dart';
 import 'package:flutter_blog/data/dto/post_request.dart';
@@ -11,7 +13,6 @@ import 'package:logger/logger.dart';
 class WebtoonRepository {
 //
   Future<ResponseDTO> fetchPostList(String jwt) async {
-    Logger().d("fetchPostList실행");
     try {
       // 1. 통신
       Response response = await dio.get(
@@ -46,8 +47,6 @@ class WebtoonRepository {
         options: Options(headers: {"Authorization": "${jwt}"}),
       );
 
-      Logger().d(response.data);
-
       // 2. ResponseDTO 파싱
       ResponseDTO responseDTO = new ResponseDTO.fromJson(response.data);
 
@@ -75,6 +74,7 @@ class WebtoonRepository {
           }));
       // 응답 받은 데이터 파싱
       ResponseDTO responseDTO = new ResponseDTO.fromJson(response.data);
+      // Logger().d(responseDTO);
       responseDTO.data = Webtoon.fromJson(responseDTO.data);
 
       return responseDTO;
@@ -86,7 +86,6 @@ class WebtoonRepository {
 
       // return ResponseDTO(-1, "게시글 한건 불러오기 실패", null);
       // return ResponseDTO(success: false, data: null, errorType: new ErrorType("13없음", 404));
-      print("xxxxxxxxx");
       return ResponseDTO();
     }
   }
@@ -94,31 +93,21 @@ class WebtoonRepository {
   Future<ResponseDTO> fetchWebtoonList(String jwt) async {
     try {
       // 통신
-      print("11111aa111111");
       Response response = await dio.get("/webtoons",
-          // 로그인한 화면을 확인하기 위해 임시로 JWT 토큰 부여
           options: Options(headers: {
             "Authorization":
                 "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJtZXRhY29kaW5nLWtleSIsImlkIjoxLCJlbWFpbCI6InNzYXJAbmF0ZS5jb20iLCJleHAiOjE2OTgzODY3MTN9.bCIsMY0FRg4MFCH32s6UYexrTjcm23hPoN8A9-hJsok-a-zA_BYg7SldbOX_3y1JMMJkRFz5PZHFEI4bzqd53w"
           }));
       // 응답 받은 데이터 파싱
-      print("222222aa2222222");
       ResponseDTO responseDTO = new ResponseDTO.fromJson(response.data);
-      print("2233333333333");
       // Logger().d(responseDTO.data);
 
-      print("444");
       List<dynamic> mapList = responseDTO.data as List<dynamic>;
-      print("555");
-      List<Webtoon> webtoonList =
-          mapList.map((webtoon) => Webtoon.fromHomeJson(webtoon)).toList();
-      print("6666");
+      List<Webtoon> webtoonList = mapList.map((webtoon) => Webtoon.fromHomeJson(webtoon)).toList();
 
       // Logger().d(webtoonList);
 
       responseDTO.data = webtoonList;
-
-      Logger().d(responseDTO);
 
       return responseDTO;
     } catch (e) {
@@ -129,7 +118,6 @@ class WebtoonRepository {
 
       // return ResponseDTO(-1, "게시글 한건 불러오기 실패", null);
       // return ResponseDTO(success: false, data: null, errorType: new ErrorType("13없음", 404));
-      print("xxxxxxxxx");
       return ResponseDTO();
     }
   }

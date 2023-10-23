@@ -1,13 +1,11 @@
 import 'package:intl/intl.dart';
 
-/* 상세보기 */
 class Episode {
-  int episodeId; // 상세보기 ID
-  String detailTitle; // 에피소드 제목
-  String thumbnail; // 에피소드 썸네일
-  int epNum;
-  double starCount; // 별점
-  bool isRead; // 읽었는지 여부
+  int episodeId;
+  String detailTitle;
+  String thumbnail;
+  double starCount;
+  bool isRead;
   int? cookieCost;
   DateTime createdAt;
 
@@ -16,7 +14,6 @@ class Episode {
     required this.episodeId,
     required this.detailTitle,
     required this.thumbnail,
-    required this.epNum,
     required this.starCount,
     required this.isRead,
     this.cookieCost,
@@ -30,7 +27,6 @@ class Episode {
       : episodeId = json["episodeId"],
         detailTitle = json["detailTitle"],
         thumbnail = json["thumbnail"],
-        epNum = json["epNum"],
         starCount = json["starCount"],
         isRead = json["isRead"],
         cookieCost = json["cookieCost"],
@@ -38,6 +34,6 @@ class Episode {
 
   @override
   String toString() {
-    return 'Episode{episodeId: $episodeId, detailTitle: $detailTitle, thumbnail: $thumbnail, epNum: $epNum, starCount: $starCount, isRead: $isRead, cookieCost: $cookieCost, createdAt: $createdAt}';
+    return 'Episode{episodeId: $episodeId, detailTitle: $detailTitle, thumbnail: $thumbnail, starCount: $starCount, isRead: $isRead, cookieCost: $cookieCost, createdAt: $createdAt}';
   }
 }

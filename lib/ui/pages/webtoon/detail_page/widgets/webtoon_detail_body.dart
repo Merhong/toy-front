@@ -5,7 +5,6 @@ import 'package:flutter_blog/ui/pages/webtoon/detail_page/widgets/webtoon_detail
 import 'package:flutter_blog/ui/pages/webtoon/detail_page/widgets/webtoon_detail_episode.dart';
 import 'package:flutter_blog/ui/pages/webtoon/detail_page/widgets/webtoon_detail_thumbnail.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:intl/intl.dart';
 
 class WebtoonDetailBody extends ConsumerWidget {
   const WebtoonDetailBody({Key? key}) : super(key: key);
@@ -18,28 +17,46 @@ class WebtoonDetailBody extends ConsumerWidget {
       return Center(child: CircularProgressIndicator());
     }
 
-    DateFormat dateFormat = DateFormat("yyyy-MM-dd");
-
     Webtoon webtoon = model!.webtoon;
 
-    return ListView.separated(
-      separatorBuilder: (context, index) => const Divider(),
-      itemCount: webtoon.episodeList!.length,
-      itemBuilder: (context, index) {
-        if (index == 0) {
-          return Column(
-            children: [
-              WebtoonDetailThumbnail(image: webtoon.image!),
-              WebtoonDetailDescription(webtoon: webtoon),
-              WebtoonDetailEpisode(
-                  index: index, webtoon: webtoon, dateFormat: dateFormat),
-            ],
-          );
-        } else {
-          return WebtoonDetailEpisode(
-              index: index, webtoon: webtoon, dateFormat: dateFormat);
-        }
-      },
+    return CustomScrollView(
+      slivers: [
+        SliverAppBar(
+          pinned: true,
+          expandedHeight: 60,
+          backgroundColor: Colors.white,
+          flexibleSpace: FlexibleSpaceBar(
+            background: Container(color: Colors.blue),
+          ),
+        ),
+
+        SliverToBoxAdapter(
+          child: WebtoonDetailThumbnail(
+            image: (webtoon.episodeList != null && webtoon.episodeList!.length != 0)
+                ? "assets/EpisodeThumbnail/${webtoon.episodeList![0].thumbnail}"
+                : "assets/EpisodeThumbnail/default_webtoon_Thumbnail.jpg",
+            likeCount: webtoon.likeCount!,
+          ),
+        ),
+
+        SliverToBoxAdapter(child: WebtoonDetailDescription(webtoon: webtoon)),
+
+        // ListView.builder(
+        //   itemCount: webtoon.episodeList!.length,
+        //   itemBuilder: (context, index) {
+        //     return WebtoonDetailEpisode(index: index, webtoon: webtoon);
+        //   },
+        // ),
+
+        SliverList(
+          delegate: SliverChildBuilderDelegate(
+            childCount: webtoon.episodeList!.length,
+            (context, index) {
+              return WebtoonDetailEpisode(index: index, webtoon: webtoon);
+            },
+          ),
+        ),
+      ],
     );
   }
 }
