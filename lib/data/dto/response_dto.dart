@@ -32,4 +32,9 @@ class ErrorType {
   int? status;
 
   ErrorType(this.message, this.status);
+
+  @override
+  String toString() {
+    return 'ErrorType{message: $message, status: $status}';
+  }
 }

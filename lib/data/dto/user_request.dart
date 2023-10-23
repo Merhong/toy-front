@@ -19,8 +19,8 @@ class JoinReqDTO {
 }
 
 class LoginReqDTO {
-  final String username;
+  final String email;
   final String password;
-  LoginReqDTO({required this.username, required this.password});
-  Map<String, dynamic> toJson() => {"username": username, "password": password};
+  LoginReqDTO({required this.email, required this.password});
+  Map<String, dynamic> toJson() => {"email": email, "password": password};
 }

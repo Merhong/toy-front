@@ -5,8 +5,8 @@ class User {
   String username;
   // String password;
   String email;
-  DateTime created;
-  DateTime updated;
+  DateTime? created;
+  DateTime? updated;
 
   // 생성자는 선택적 매개변수에 required 하는게 편하다
   User({
@@ -26,7 +26,7 @@ class User {
   User.fromJson(Map<String, dynamic> json)
       : id = json["id"],
         username = json["username"],
-        email = json["email"],
-        created = DateFormat("yyyy-mm-dd").parse(json["created"]), // 3
-        updated = DateFormat("yyyy-mm-dd").parse(json["updated"]);
+        email = json["email"];
+  // created = DateFormat("yyyy-mm-dd").parse(json["created"]), // 3
+  // updated = DateFormat("yyyy-mm-dd").parse(json["updated"]);
 }

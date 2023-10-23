@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_blog/_core/constants/http.dart';
 import 'package:flutter_blog/data/dto/response_dto.dart';
 import 'package:flutter_blog/data/model/user.dart';
+import 'package:logger/logger.dart';
 
 import '../dto/user_request.dart';
 
@@ -33,6 +34,7 @@ class UserRepository {
       Response response = await dio.post("/login", data: requestDTO.toJson());
 
       // 2. DTO 파싱
+
       ResponseDTO responseDTO = new ResponseDTO.fromJson(response.data);
       responseDTO.data = new User.fromJson(responseDTO.data);
 
@@ -45,6 +47,8 @@ class UserRepository {
 
       // 필요할때만 쓰기
       // responseDTO.data = User.fromJson(responseDTO.data);
+
+      Logger().d(responseDTO);
 
       return responseDTO;
     } catch (e) {
