@@ -22,7 +22,10 @@ class UserRepository {
       return responseDTO;
     } catch (e) {
       // 200이 아니면 catch로 감
-      return new ResponseDTO();
+      return new ResponseDTO(
+        success: false,
+        errorType: ErrorType(message: "가입실패"),
+      );
     }
   }
 
@@ -34,9 +37,10 @@ class UserRepository {
       Response response = await dio.post("/login", data: requestDTO.toJson());
 
       // 2. DTO 파싱
-
       ResponseDTO responseDTO = new ResponseDTO.fromJson(response.data);
+
       responseDTO.data = new User.fromJson(responseDTO.data);
+      Logger().d(responseDTO);
 
       // 3. 토큰 받기
       List<String>? jwt = response.headers["Authorization"];
@@ -48,12 +52,15 @@ class UserRepository {
       // 필요할때만 쓰기
       // responseDTO.data = User.fromJson(responseDTO.data);
 
-      Logger().d(responseDTO);
-
       return responseDTO;
     } catch (e) {
       // 200이 아니면 catch로 감
-      return new ResponseDTO();
+
+      // Logger().d("캐치로옴");
+      return new ResponseDTO(
+        success: false,
+        errorType: ErrorType(message: "로그인실패"),
+      );
     }
   }
 //

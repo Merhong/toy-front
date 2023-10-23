@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_blog/_core/constants/http.dart';
 
 import '../../_core/constants/size.dart';
 import '../../data/model/webtoon.dart';
@@ -24,7 +25,7 @@ class WebtoonListItem extends StatelessWidget {
             children: [
               Container(
                 height: sizeWebtoonListItemPictureHeight160,
-                child: Image.asset("assets/WebtoonThumbnail/${webtoon.image}", fit: BoxFit.cover),
+                child: Image.network("${imageURL}/WebtoonThumbnail/${webtoon.image}", fit: BoxFit.cover),
               ),
               if (webtoon.specially == "순위") ...[
                 Container(

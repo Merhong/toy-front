@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_blog/_core/constants/http.dart';
 import 'package:flutter_blog/_core/constants/size.dart';
 
 class WebtoonListPageView extends StatefulWidget {
@@ -57,8 +58,8 @@ class _WebtoonListPageViewState extends State<WebtoonListPageView> {
               Container(
                 height: double.infinity,
                 width: sizeGetScreenWidth(context),
-                child: Image.asset(
-                  "assets/EpisodeThumbnail/${(index + 1) * 16}.jpg",
+                child: Image.network(
+                  "${imageURL}EpisodeThumbnail/${(index + 1) * 16}.jpg",
                   fit: BoxFit.cover,
                 ),
               ),

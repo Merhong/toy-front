@@ -7,6 +7,7 @@ import 'package:flutter_blog/data/model/user.dart';
 import 'package:flutter_blog/data/repository/user_repository.dart';
 import 'package:flutter_blog/main.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:logger/logger.dart';
 
 // 1. 창고 데이터
 class SessionUser {
@@ -48,10 +49,11 @@ class SessionUser {
       // 2. 디바이스에 JWT 저장 (자동 로그인)
       await secureStorage.write(key: "jwt", value: responseDTO.token);
 
+      // print("성공");
       // 3. 페이지 이동
       Navigator.pushNamed(mContext!, Move.homeListPage);
     } else {
-      ScaffoldMessenger.of(mContext!).showSnackBar(SnackBar(content: Text(responseDTO.errorType!.message!)));
+      ScaffoldMessenger.of(mContext!).showSnackBar(SnackBar(content: Text("${responseDTO.errorType!.message!}")));
     }
   }
 

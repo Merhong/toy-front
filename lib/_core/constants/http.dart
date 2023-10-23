@@ -1,11 +1,16 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
+const String serverURL = "http://192.168.0.45:8081";
+// 통신용 백엔드 서버 주소 여기 적기
+///////////////////////////////////////////////////////////////
+
+const String imageURL = "${serverURL}/image?route=";
+
 // http 통신
 final dio = Dio(
   BaseOptions(
-    baseUrl: "http://192.168.0.45:8081", // 내 IP 입력 // 학원
-    // baseUrl: "http://172.30.1.18:8081", // 내 IP 입력 // 집
+    baseUrl: serverURL,
     contentType: "application/json; charset=utf-8",
   ),
 );

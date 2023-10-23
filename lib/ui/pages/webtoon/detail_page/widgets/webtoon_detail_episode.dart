@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_blog/_core/constants/http.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../../_core/constants/size.dart';
@@ -33,8 +34,8 @@ class WebtoonDetailEpisode extends StatelessWidget {
                   height: sizeXL50,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(sizeBorder5),
-                    child: Image.asset(
-                      'assets/EpisodeThumbnail/${webtoon.episodeList![index].thumbnail}',
+                    child: Image.network(
+                      '$imageURL/EpisodeThumbnail/${webtoon.episodeList![index].thumbnail}',
                       fit: BoxFit.cover,
                     ),
                   ),

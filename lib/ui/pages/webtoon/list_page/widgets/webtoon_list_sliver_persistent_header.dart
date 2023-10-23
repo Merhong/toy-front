@@ -20,32 +20,27 @@ class WebtoonListSliverPersistentHeader extends StatelessWidget {
             color: Colors.white,
             border: Border.symmetric(horizontal: BorderSide(color: Colors.grey, width: 1.0)),
           ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text("신작", style: TextStyle(color: Colors.black)),
-                  Text("매일+", style: TextStyle(color: Colors.black)),
-                  InkWell(
-                      onTap: () {
-                        print("클릭");
-                      },
-                      child: Text("월", style: TextStyle(color: Colors.black))),
-                  InkWell(
-                      onTap: () {
-                        print("클릭");
-                      },
-                      child: Text("화", style: TextStyle(color: Colors.black))),
-                  Text("수", style: TextStyle(color: Colors.black)),
-                  Text("목", style: TextStyle(color: Colors.black)),
-                  Text("금", style: TextStyle(color: Colors.black)),
-                  Text("토", style: TextStyle(color: Colors.black)),
-                  Text("일", style: TextStyle(color: Colors.black)),
-                  Text("완결", style: TextStyle(color: Colors.black)),
-                ],
-              ),
+              Text("신작", style: TextStyle(color: Colors.black)),
+              Text("매일+", style: TextStyle(color: Colors.black)),
+              InkWell(
+                  onTap: () {
+                    print("클릭");
+                  },
+                  child: Text("월", style: TextStyle(color: Colors.black))),
+              InkWell(
+                  onTap: () {
+                    print("클릭");
+                  },
+                  child: Text("화", style: TextStyle(color: Colors.black))),
+              Text("수", style: TextStyle(color: Colors.black)),
+              Text("목", style: TextStyle(color: Colors.black)),
+              Text("금", style: TextStyle(color: Colors.black)),
+              Text("토", style: TextStyle(color: Colors.black)),
+              Text("일", style: TextStyle(color: Colors.black)),
+              Text("완결", style: TextStyle(color: Colors.black)),
             ],
           ),
         ),

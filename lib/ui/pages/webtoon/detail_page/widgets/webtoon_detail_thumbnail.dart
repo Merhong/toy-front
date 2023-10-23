@@ -50,7 +50,7 @@ class WebtoonDetailThumbnail extends StatelessWidget {
       child: Center(
         child: ClipRRect(
             borderRadius: BorderRadius.circular(10),
-            child: Image.asset('${image}', fit: BoxFit.cover, height: 190, width: sizeGetScreenWidth(context) * 0.85)),
+            child: Image.network('${image}', fit: BoxFit.cover, height: 190, width: sizeGetScreenWidth(context) * 0.85)),
       ),
     );
   }

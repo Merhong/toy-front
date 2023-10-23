@@ -33,7 +33,7 @@ class WebtoonRepository {
       return responseDTO;
     } catch (e) {
       // 200이 아니면 catch로 감
-      return new ResponseDTO();
+      return new ResponseDTO(success: false);
       // return new ResponseDTO(-1, "게시글 목록 불러오기 실패", null);
     }
   }
@@ -60,7 +60,7 @@ class WebtoonRepository {
     } catch (e) {
       // 200이 아니면 catch로 감
       // return new ResponseDTO(-1, "게시글 작성 실패", null);
-      return new ResponseDTO();
+      return new ResponseDTO(success: false);
     }
   }
 
@@ -86,7 +86,7 @@ class WebtoonRepository {
 
       // return ResponseDTO(-1, "게시글 한건 불러오기 실패", null);
       // return ResponseDTO(success: false, data: null, errorType: new ErrorType("13없음", 404));
-      return ResponseDTO();
+      return ResponseDTO(success: false);
     }
   }
 
@@ -118,7 +118,7 @@ class WebtoonRepository {
 
       // return ResponseDTO(-1, "게시글 한건 불러오기 실패", null);
       // return ResponseDTO(success: false, data: null, errorType: new ErrorType("13없음", 404));
-      return ResponseDTO();
+      return ResponseDTO(success: false);
     }
   }
 

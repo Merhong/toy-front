@@ -3,14 +3,14 @@ class ResponseDTO {
   // String? msg; // 서버에서 응답 시 보내는 메시지를 담아두는 변수
   String? token; // 헤더로 던진 토큰 값을 담아두는 변수
   dynamic? data; // 서버에서 응답한 데이터를 담아두는 변수
-  bool? success;
+  bool success;
   ErrorType? errorType;
 
   ResponseDTO({
     // this.code,
     // this.msg,
     this.data,
-    this.success,
+    required this.success,
     this.errorType,
   });
 
@@ -31,7 +31,7 @@ class ErrorType {
   String? message;
   int? status;
 
-  ErrorType(this.message, this.status);
+  ErrorType({this.message, this.status});
 
   @override
   String toString() {
