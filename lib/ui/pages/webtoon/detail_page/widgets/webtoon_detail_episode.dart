@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-
 import '../../../../../_core/constants/size.dart';
 import '../../../../../data/model/webtoon.dart';
+import 'package:url_launcher/url_launcher.dart'; // url_launcher 패키지 추가
 
 class WebtoonDetailEpisode extends StatelessWidget {
   WebtoonDetailEpisode({
-    super.key,
+    Key? key,
     required this.webtoon,
     required this.index,
   });
@@ -19,13 +19,16 @@ class WebtoonDetailEpisode extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        print("클릭");
+        // 클릭했을 때 해당 URL로 이동하도록 처리
+        final String url =
+            'https://comic.naver.com/webtoon/list?titleId=817122';
       },
       child: Column(
         children: [
           Divider(height: 1, color: Colors.grey),
           Padding(
-            padding: EdgeInsets.fromLTRB(sizePaddingLR17, sizeS5, sizePaddingLR17, sizeS5),
+            padding: EdgeInsets.fromLTRB(
+                sizePaddingLR17, sizeS5, sizePaddingLR17, sizeS5),
             child: Row(
               children: [
                 SizedBox(
@@ -46,7 +49,8 @@ class WebtoonDetailEpisode extends StatelessWidget {
                     Text("${webtoon.episodeList![index].detailTitle}"),
                     Row(
                       children: [
-                        Text("★${webtoon.episodeList![index].starCount}   ${dateFormat.format(webtoon.episodeList![index].createdAt)}",
+                        Text(
+                            "★${webtoon.episodeList![index].starCount}   ${dateFormat.format(webtoon.episodeList![index].createdAt)}",
                             style: TextStyle(fontSize: 10, color: Colors.grey)),
                       ],
                     ),
